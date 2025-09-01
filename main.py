@@ -1,9 +1,7 @@
 from fastapi import FastAPI
 
-from .routers import users, wallet
-
-from .database_connection import Base, engine
-from .routers import transactions, transfers, users
+from .routers import transactions, transfers, users, wallet
+from .database_connection import engine, Base
 
 app = FastAPI(title="Digital Wallet API Application")
 

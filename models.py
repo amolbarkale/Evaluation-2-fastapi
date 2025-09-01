@@ -1,8 +1,8 @@
-from .database_connection import Base
 from sqlalchemy import Integer, String, Float, TIMESTAMP, func, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
 from datetime import datetime
 
+from .database_connection import Base
 
 class User(Base):
     __tablename__ = "users"
