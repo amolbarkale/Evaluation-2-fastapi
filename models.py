@@ -1,19 +1,21 @@
-from .database import Base
+from .database_connection import Base
 from sqlalchemy import Integer, String, Float, TIMESTAMP, func, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
 from datetime import datetime
+
 
 class User(Base):
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
     username: Mapped[str] = mapped_column(..., String, unique=True, index=True)
-    email: Mapped[str] = mapped_column(..., String, unique=True, index=True)
+    email: Mapped[str] = mapped_column(String, unique=True, index=True)
     password: Mapped[str] = mapped_column(..., String)
     phone_number: Mapped[str] = mapped_column(String)
     balance: Mapped[float] = mapped_column(Float, default=0.0)
     created_at: Mapped[datetime] = mapped_column(TIMESTAMP, default=func.now())
     updated_at: Mapped[datetime] = mapped_column(TIMESTAMP, default=func.now(), onupdate=func.now())
+    
 
 class Transfers(Base):
     __tablename__ = "transfers"

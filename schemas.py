@@ -7,6 +7,18 @@ class UserCreate(BaseModel):
     password: str
     phone_number: str
 
+    class Config:
+        from_attributes = True
+
+
+class ShowBalanceResponse(BaseModel):
+    user_id: int
+    balance: float
+    last_updated: datetime
+
+    class Config:
+        from_attributes = True
+
 class UserRead(BaseModel):
     id: int
     username: str

@@ -1,5 +1,5 @@
-from sqlalchemy import Field, Session, create_engine
-from sqlalchemy.orm import declarative_base
+from sqlalchemy import create_engine
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 sqlite_url = f"sqlite:///./database.db"
 
@@ -7,7 +7,7 @@ connect_args = {"check_same_thread": False}
 
 engine = create_engine(sqlite_url, connect_args=connect_args)
 
-SessionLocal = Session(bind=engine, autocommit=False, autoflush=False)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
